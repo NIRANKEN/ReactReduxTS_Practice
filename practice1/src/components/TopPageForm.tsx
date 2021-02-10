@@ -5,12 +5,13 @@ import { RadioInput } from './RadioInput';
 import { ShowState } from './ShowState';
 import { SubmitButton } from './SubmitButton';
 
+// Containerに定義されているpropsへの変換はココを意識する
 interface OwnProps {
     inputValue: string
     selectedValue: string
     clickCount: number
-
 }
+
 type Props =  OwnProps & TopPageHandler
 export class TopPageForm extends React.Component<Props> {
     render(){
