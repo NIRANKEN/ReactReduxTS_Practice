@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { TextInputActions } from "../actions";
-import { TopPageForm } from "../components/TopPageForm";
+import { TopPageForm } from "../components/organisms/TopPageForm";
 import { AppState } from "../store";
 
 export interface TopPageHandler {

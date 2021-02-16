@@ -1,9 +1,9 @@
 import React from 'react'
-import { TextInput } from './TextInput';
-import { TopPageHandler } from '../containers/TopPageContainer';
-import { RadioInput } from './RadioInput';
-import { ShowState } from './ShowState';
-import { SubmitButton } from './SubmitButton';
+import { TextInput } from '../atoms/TextInput';
+import { TopPageHandler } from '../../containers/TopPageContainer';
+import { RadioInput } from '../atoms/RadioInput';
+import { ShowState } from '../atoms/ShowState';
+import { SubmitButton } from '../atoms/SubmitButton';
 
 // Containerに定義されているpropsへの変換はココを意識する
 interface OwnProps {
