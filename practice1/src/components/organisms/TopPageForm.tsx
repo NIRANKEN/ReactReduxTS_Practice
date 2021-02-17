@@ -4,6 +4,7 @@ import { TopPageHandler } from '../../containers/TopPageContainer';
 import { RadioInput } from '../atoms/RadioInput';
 import { ShowState } from '../atoms/ShowState';
 import { SubmitButton } from '../atoms/SubmitButton';
+import { Box, Button } from '@material-ui/core';
 
 // Containerに定義されているpropsへの変換はココを意識する
 interface OwnProps {
@@ -17,11 +18,15 @@ export class TopPageForm extends React.Component<Props> {
     render(){
         return(
             <React.Fragment>
-                <TextInput title='入力' inputValue={this.props.inputValue} onChangeValue={this.props.handleOnChangeValue}/>
-                <RadioInput title='ラジオ' selectedValue={this.props.selectedValue} onChangeValue={this.props.handleOnSelectValue}/>
-                <SubmitButton title='Click me' onClick={this.props.handleOnClick}/>
-                <ShowState inputValue={this.props.inputValue} selectedValue={this.props.selectedValue} clickCount={this.props.clickCount}/>
-
+                <Box border-radius="4px" border="2px solid blue" overflow="hidden" padding="8px" margin-bottom="8px">
+                    <TextInput title='入力' inputValue={this.props.inputValue} onChangeValue={this.props.handleOnChangeValue}/>
+                    <RadioInput title='ラジオ' selectedValue={this.props.selectedValue} onChangeValue={this.props.handleOnSelectValue}/>
+                    <SubmitButton title='Click me' onClick={this.props.handleOnClick}/>
+                    <ShowState inputValue={this.props.inputValue} selectedValue={this.props.selectedValue} clickCount={this.props.clickCount}/>
+                </Box>
+                <Box border-radius="4px" border="2px solid blue" overflow="hidden" padding="8px" margin-bottom="8px">
+                    <Button variant="contained" color="primary">Hello World</Button>
+                </Box>
             </React.Fragment>
         )
     }
