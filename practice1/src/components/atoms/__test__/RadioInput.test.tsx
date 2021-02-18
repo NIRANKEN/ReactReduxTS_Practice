@@ -23,7 +23,7 @@ describe('Check <RadioInput /> Component...', () => {
         radioInputElements = render(radioInputElem(initTestProps));
     });
 
-    it('check title', () => {
+    it('1. check title', () => {
         expect(radioInputElements.getByText('Test Title')).toBeInTheDocument();
         expect(radioInputElements.getAllByRole('radio')).toHaveLength(3);
 
@@ -37,7 +37,7 @@ describe('Check <RadioInput /> Component...', () => {
         expect(onChangeValue).toHaveBeenCalledTimes(0);
     });
 
-    it('click center radio button', () => {
+    it('2. click center radio button', () => {
         fireEvent.click(radioInputElements.getAllByRole('radio')[1], {
         });
 
