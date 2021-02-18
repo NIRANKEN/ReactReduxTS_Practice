@@ -5,11 +5,11 @@ import { RadioInput } from '../RadioInput';
 
 let radioInputElements: RenderResult;
 
-type RadioInputSetting = React.ComponentProps<typeof RadioInput>;
+type RadioInputProps = React.ComponentProps<typeof RadioInput>;
 
 describe('Check <RadioInput /> Component...', () => {
-    const radioInputElem = (setting: RadioInputSetting) => {
-        return React.createElement(() => <RadioInput {...setting} />);
+    const radioInputElem = (props: RadioInputProps) => {
+        return React.createElement(() => <RadioInput {...props} />);
     };
     const onChangeValue = jest.fn();
     const initTestProps = {
