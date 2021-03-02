@@ -5,6 +5,9 @@ import { RadioInput } from '../atoms/RadioInput';
 import { ShowState } from '../atoms/ShowState';
 import { SubmitButton } from '../atoms/SubmitButton';
 import { Box, Button } from '@material-ui/core';
+import ChartCard from '../atoms/ChartCard';
+import { RechartsSample } from '../atoms/RechartsSample';
+import ReactChartJs2Sample from '../atoms/ReactChartJs2Sample';
 
 // Containerに定義されているpropsへの変換はココを意識する
 interface OwnProps {
@@ -35,8 +38,30 @@ export class TopPageForm extends React.Component<Props> {
                         <Button variant="contained" color="default">default</Button>
                         <Button variant="contained">no color</Button>
                     </Box>
+
+                    <h3>・Card Component</h3>
+                    <Box border-radius="4px" border="2px solid blue" overflow="hidden" padding="16px">
+                        <ChartCard />
+                        <ChartCard />
+                        <ChartCard />
+                    </Box>
+
+                    <h3>・Status Chip</h3>
+                    <Box border-radius="4px" border="2px solid blue" overflow="hidden" padding="16px">
+                    </Box>
+
+                    <h3>・Recharts Sample</h3>
+                    <Box border-radius="4px" border="2px solid blue" overflow="hidden" padding="16px" height="360px">
+                        <RechartsSample />
+                    </Box>
+
+                    <h3>・ReactChartJs2 Sample</h3>
+                    <Box border-radius="4px" border="2px solid blue" overflow="hidden" padding="16px" >
+                        <ReactChartJs2Sample />
+                    </Box>
                 </Box>
             </React.Fragment>
         )
     }
+
 }
