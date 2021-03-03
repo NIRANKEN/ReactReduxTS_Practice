@@ -8,6 +8,7 @@ import { Box, Button } from '@material-ui/core';
 import ChartCard from '../atoms/ChartCard';
 import { RechartsSample } from '../atoms/RechartsSample';
 import ReactChartJs2Sample from '../atoms/ReactChartJs2Sample';
+import ApexChartsSample from '../atoms/ApexChartsSample';
 
 // Containerに定義されているpropsへの変換はココを意識する
 interface OwnProps {
@@ -51,13 +52,18 @@ export class TopPageForm extends React.Component<Props> {
                     </Box>
 
                     <h3>・Recharts Sample</h3>
-                    <Box border-radius="4px" border="2px solid blue" overflow="hidden" padding="16px" height="360px">
+                    <Box border-radius="4px" border="2px solid blue" overflow="hidden" padding="16px" height="350px" width="500px">
                         <RechartsSample />
                     </Box>
 
                     <h3>・ReactChartJs2 Sample</h3>
-                    <Box border-radius="4px" border="2px solid blue" overflow="hidden" padding="16px" >
+                    <Box border-radius="4px" border="2px solid blue" overflow="hidden" padding="16px" width="500px">
                         <ReactChartJs2Sample />
+                    </Box>
+
+                    <h3>・ApexChart Sample</h3>
+                    <Box border-radius="4px" border="2px solid blue" overflow="hidden" padding="16px" width="500px">
+                        <ApexChartsSample />
                     </Box>
                 </Box>
             </React.Fragment>
