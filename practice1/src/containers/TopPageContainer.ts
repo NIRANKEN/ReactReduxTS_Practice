@@ -9,6 +9,7 @@ export interface TopPageHandler {
     handleOnChangeValue(value: string): void
     handleOnSelectValue(value: string): void
     handleOnClick(): void
+    handleOnCheckBox(checked: boolean): void
 }
 
 // アプリケーション全体のstateを基に、TopPageFormにわたすpropsをつくる
@@ -16,7 +17,8 @@ const mapStateToProps = (appState: AppState) => {
     return {
         inputValue: appState.state.inputValue,
         selectedValue: appState.state.selectedValue,
-        clickCount: appState.state.clickCount
+        clickCount: appState.state.clickCount,
+        checkedState: appState.state.checkedState
     }
 }
 
@@ -38,7 +40,11 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
         // handleOnClick呼ばれたらすること一覧
         handleOnClick: () => { 
             dispatch(TextInputActions.updateClickCount()) 
-        }
+        },
+
+        handleOnCheckBox: (checked: boolean) => {
+            dispatch(TextInputActions.updateCheckBoxState(checked))
+        },
     }
 }
 

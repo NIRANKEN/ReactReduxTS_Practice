@@ -4,67 +4,91 @@ import { TopPageHandler } from '../../containers/TopPageContainer';
 import { RadioInput } from '../atoms/RadioInput';
 import { ShowState } from '../atoms/ShowState';
 import { SubmitButton } from '../atoms/SubmitButton';
-import { Box, Button } from '@material-ui/core';
+import { Box, Button, Grid, Typography } from '@material-ui/core';
 import ChartCard from '../atoms/ChartCard';
 import { RechartsSample } from '../atoms/RechartsSample';
 import ReactChartJs2Sample from '../atoms/ReactChartJs2Sample';
 import ApexChartsSample from '../atoms/ApexChartsSample';
+import CheckBox from '../atoms/CheckBox';
 
 // Containerに定義されているpropsへの変換はココを意識する
 interface OwnProps {
     inputValue: string
     selectedValue: string
-    clickCount: number
+    clickCount: number,
+    checkedState: boolean
 }
 
+// TODO: styleとか、共通化できるところは共通にしたい.
 type Props =  OwnProps & TopPageHandler
 export class TopPageForm extends React.Component<Props> {
     render(){
         return(
             <React.Fragment>
                 <Box margin="64px">
-                    <h3>・Init React-Redux-TypeScript Elements</h3>
-                    <Box border-radius="4px" border="2px solid blue" overflow="hidden" padding="16px">
+                    <Typography variant="h4">・Init React-Redux-TypeScript Elements</Typography>
+                    <Box border-radius="4px" border="2px solid blue" overflow="hidden" padding="16px" marginBottom="24px">
                         <TextInput title='入力' inputValue={this.props.inputValue} onChangeValue={this.props.handleOnChangeValue}/>
                         <RadioInput title='ラジオ' selectedValue={this.props.selectedValue} onChangeValue={this.props.handleOnSelectValue}/>
                         <SubmitButton title='Click me' onClick={this.props.handleOnClick}/>
                         <ShowState inputValue={this.props.inputValue} selectedValue={this.props.selectedValue} clickCount={this.props.clickCount}/>
                     </Box>
 
-                    <h3>・Material-UI Button Area</h3>
-                    <Box border-radius="4px" border="2px solid blue" overflow="hidden" padding="16px">
-                        <Button variant="contained" color="primary">primary</Button>
-                        <Button variant="contained" color="secondary">secondary</Button>
-                        <Button variant="contained" color="inherit">inherit</Button>
-                        <Button variant="contained" color="default">default</Button>
-                        <Button variant="contained">no color</Button>
+                    <Typography variant="h4">・Material-UI Button Area</Typography>
+                    <Box border-radius="4px" border="2px solid blue" overflow="hidden" padding="16px" marginBottom="24px">
+                        <Grid container spacing={1}>
+                            <Grid item>
+                                <Button variant="contained" color="primary">primary</Button>
+                            </Grid>
+                            <Grid item>
+                                <Button variant="contained" color="secondary">secondary</Button>
+                            </Grid>
+                            <Grid item>
+                                <Button variant="contained" color="inherit">inherit</Button>
+                            </Grid>
+                            <Grid item>
+                                <Button variant="contained" color="default">default</Button>
+                            </Grid>
+                            <Grid item>
+                                <Button variant="contained">no color</Button>
+                            </Grid>
+                        </Grid>
                     </Box>
 
-                    <h3>・Card Component</h3>
-                    <Box border-radius="4px" border="2px solid blue" overflow="hidden" padding="16px">
+                    <Typography variant="h4">・Card Components</Typography>
+                    <Box border-radius="4px" border="2px solid blue" overflow="hidden" padding="16px" marginBottom="24px">
                         <ChartCard />
                         <ChartCard />
                         <ChartCard />
                     </Box>
 
-                    <h3>・Status Chip</h3>
-                    <Box border-radius="4px" border="2px solid blue" overflow="hidden" padding="16px">
+                    <Typography variant="h4">・CheckBox</Typography>
+                    <Box border-radius="4px" border="2px solid blue" overflow="hidden" padding="16px" marginBottom="24px">
+                        <CheckBox checkState={this.props.checkedState} handleOnChange={this.props.handleOnCheckBox}/>
                     </Box>
 
-                    <h3>・Recharts Sample</h3>
-                    <Box border-radius="4px" border="2px solid blue" overflow="hidden" padding="16px" height="350px" width="500px">
-                        <RechartsSample />
-                    </Box>
+                    <Grid container spacing={5}>
+                        <Grid item>
+                            <Typography variant="h4">・Recharts Sample</Typography>
+                            <Box border-radius="4px" border="2px solid blue" overflow="hidden" padding="16px" height="400px" width="800px" marginBottom="24px">
+                                <RechartsSample />
+                            </Box>
+                        </Grid>
 
-                    <h3>・ReactChartJs2 Sample</h3>
-                    <Box border-radius="4px" border="2px solid blue" overflow="hidden" padding="16px" width="500px">
-                        <ReactChartJs2Sample />
-                    </Box>
+                        <Grid item>
+                            <Typography variant="h4">・ReactChartJs2 Sample</Typography>
+                            <Box border-radius="4px" border="2px solid blue" overflow="hidden" padding="16px" height="400px" width="800px" marginBottom="24px">
+                                <ReactChartJs2Sample />
+                            </Box>
+                        </Grid>
 
-                    <h3>・ApexChart Sample</h3>
-                    <Box border-radius="4px" border="2px solid blue" overflow="hidden" padding="16px" width="500px">
-                        <ApexChartsSample />
-                    </Box>
+                        <Grid item>
+                            <Typography variant="h4">・ApexCharts Sample</Typography>
+                            <Box border-radius="4px" border="2px solid blue" overflow="hidden" padding="16px" height="400px" width="800px" marginBottom="24px">
+                                <ApexChartsSample />
+                            </Box>
+                        </Grid>
+                    </Grid>
                 </Box>
             </React.Fragment>
         )

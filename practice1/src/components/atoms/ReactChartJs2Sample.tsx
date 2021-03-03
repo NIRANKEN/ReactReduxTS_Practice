@@ -48,8 +48,6 @@ const options = {
             }
         ]
     },
-    responsive: true,
-    maintainAspectRatio: true,
 }
 
 const ReactChartJs2Sample = () => {
