@@ -19,4 +19,10 @@ describe('Test for Actions created by ActionCreator', () => {
         expect(updateClickCountAction.payload).toBe(undefined);
         expect(updateClickCountAction.type).toBe('ACTION_UPDATE_CLICK_COUNT');
     });
+
+    it('test updateCheckBoxState', () => {
+        const updateCheckBoxState : Action<boolean> = TextInputActions.updateCheckBoxState(true);
+        expect(updateCheckBoxState.payload).toBe(true);
+        expect(updateCheckBoxState.type).toBe('ACTION_UPDATE_CHECKBOX');
+    });
 });

@@ -6,18 +6,27 @@ const states : State[] = [
     {
         inputValue: 'Hello World!',
         selectedValue: '',
-        clickCount: 0
+        clickCount: 0,
+        checkedState: false,
     }, 
     {
         inputValue: '',
         selectedValue: '2',
-        clickCount: 0
+        clickCount: 0,
+        checkedState: false,
     },
     {
         inputValue: '',
         selectedValue: '',
-        clickCount: 5
-    }
+        clickCount: 5,
+        checkedState: false,
+    },
+    {
+        inputValue: '',
+        selectedValue: '',
+        clickCount: 0,
+        checkedState: true,
+    },
 ]
 
 describe('Reducer Test', () => {
@@ -34,6 +43,7 @@ describe('Reducer Test', () => {
                 + Second value
                 
                   Object {
+                    \\"checkedState\\": false,
                     \\"clickCount\\": 0,
                 -   \\"inputValue\\": \\"\\",
                 +   \\"inputValue\\": \\"Hello World!\\",
@@ -54,6 +64,7 @@ describe('Reducer Test', () => {
                 + Second value
                 
                   Object {
+                    \\"checkedState\\": false,
                     \\"clickCount\\": 0,
                     \\"inputValue\\": \\"\\",
                 -   \\"selectedValue\\": \\"\\",
@@ -74,8 +85,31 @@ describe('Reducer Test', () => {
                 + Second value
                 
                   Object {
+                    \\"checkedState\\": false,
                 -   \\"clickCount\\": 0,
                 +   \\"clickCount\\": 1,
+                    \\"inputValue\\": \\"\\",
+                    \\"selectedValue\\": \\"\\",
+                  }"
+        `);
+    });
+
+    
+    it('should update clickCount', () => {
+        expect(
+            snapshotDiff(
+                initialState,
+                Reducer(initialState, TextInputActions.updateCheckBoxState(true))
+            )
+        ).toMatchInlineSnapshot(`
+                "Snapshot Diff:
+                - First value
+                + Second value
+                
+                  Object {
+                -   \\"checkedState\\": false,
+                +   \\"checkedState\\": true,
+                    \\"clickCount\\": 0,
                     \\"inputValue\\": \\"\\",
                     \\"selectedValue\\": \\"\\",
                   }"
