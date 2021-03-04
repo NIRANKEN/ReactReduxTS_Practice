@@ -12,6 +12,7 @@ import {
 } from 'recharts';
 import { RechartsProps } from '../../RechartsProps';
 
+// TODO: これは外からとってくる
 const data = [
   {
     name: '2015年度',
@@ -66,6 +67,7 @@ interface OwnProps {
 
 type Props = OwnProps;
 
+// TODO: 固定のものと、パラメータになるのが何かを仕分けする
 export const RechartsSample : React.FC<Props> = (props) => {
     return (
       <ResponsiveContainer width="100%" height="100%">
