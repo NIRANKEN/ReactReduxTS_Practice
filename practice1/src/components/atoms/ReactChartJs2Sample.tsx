@@ -13,6 +13,7 @@ const data = {
       borderColor: 'white',
       borderWidth: 2,
       yAxisID: 'first-y-axis',
+      order: 2, // order低いほうが上にくる
     },
     {
       type: 'bar',
@@ -20,15 +21,18 @@ const data = {
       backgroundColor: '#ecbde3',
       data: [680, 1108, 1200, 1098, 967, 800],
       yAxisID: 'first-y-axis',
+      order: 3,
     },
     {
       type: 'line',
       label: '管理者比率',
-      borderColor: '#7a5c9a',
-      borderWidth: 2,
+      borderColor: '#6a5c9a',
+      borderWidth: 1,
       fill: false,
-      data: [14, 15.2, 14.8, 13.9, 8.68, 5.9],
+      data: [13, 15.2, 14.8, 13.9, 8.68, 5.9],
       yAxisID: 'second-y-axis',
+      order: 1, 
+      lineTension: 0, // 直線引く
     },
   ],
 }
@@ -40,12 +44,26 @@ const options = {
                 id: 'first-y-axis',
                 type: 'linear',
                 position: 'left',
+                gridLines: {
+                },
+                ticks: {
+                  callback: (value: number) => {
+                    return value + '人';
+                  }
+                }
             },
             {
                 id: 'second-y-axis',
                 type: 'linear',
                 position: 'right',
-            }
+                gridLines: {
+                },
+                ticks: {
+                  callback: (value: number) => {
+                    return value + '%';
+                  }
+                }
+            },
         ]
     },
 }

@@ -44,14 +44,13 @@ const state = {
                   title: {
                     text: '人数',
                   },
-                  min: 0,
-                  max: 15000,
+                  labels: {
+                    formatter: (value: number) => { return value + ('人')}
+                  }
                 }, 
                 {
-                  seriesName: '管理職者人数',
+                  seriesName: '総社員数',
                   show: false,
-                  min: 0,
-                  max: 15000,
                 },
                 {
                   seriesName: '管理職者比率',
@@ -59,6 +58,9 @@ const state = {
                   title: {
                     text: '比率'
                   },
+                  labels: {
+                    formatter: (value: number) => { return value + ('%')}
+                  }
                 }
               ]
             },

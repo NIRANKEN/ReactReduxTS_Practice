@@ -10,3 +10,8 @@ export const TextInputActions = {
     updateClickCount: actionCreator('ACTION_UPDATE_CLICK_COUNT'),
     updateCheckBoxState: actionCreator<boolean>('ACTION_UPDATE_CHECKBOX')
 }
+
+export const RechartsModifyActions = {
+    legendMouseEnter: actionCreator<string>('LEGEND_MOUSE_ENTER'),
+    legendMouseLeave: actionCreator<string>('LEGEND_MOUSE_LEAVE'),
+}
