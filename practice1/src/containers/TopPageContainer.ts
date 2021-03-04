@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { TextInputActions } from "../actions";
+import { RechartsModifyActions, TextInputActions } from "../actions";
 import { TopPageForm } from "../components/organisms/TopPageForm";
 import { AppState } from "../store";
 
@@ -10,6 +10,9 @@ export interface TopPageHandler {
     handleOnSelectValue(value: string): void
     handleOnClick(): void
     handleOnCheckBox(checked: boolean): void
+    handleRechartsLegendMouseEnter(dataKey: string): void
+    handleRechartsLegendMouseLeave(dataKey: string): void
+    handleRechartsLegendSelectElement(dataKey: string): void
 }
 
 // アプリケーション全体のstateを基に、TopPageFormにわたすpropsをつくる
@@ -18,7 +21,8 @@ const mapStateToProps = (appState: AppState) => {
         inputValue: appState.state.inputValue,
         selectedValue: appState.state.selectedValue,
         clickCount: appState.state.clickCount,
-        checkedState: appState.state.checkedState
+        checkedState: appState.state.checkedState,
+        rechartsProps: appState.state.rechartsProps
     }
 }
 
@@ -44,6 +48,18 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 
         handleOnCheckBox: (checked: boolean) => {
             dispatch(TextInputActions.updateCheckBoxState(checked))
+        },
+
+        handleRechartsLegendMouseEnter: (dataKey: string) => {
+            dispatch(RechartsModifyActions.legendMouseEnter(dataKey))
+        },
+
+        handleRechartsLegendMouseLeave: (dataKey: string) => {
+            dispatch(RechartsModifyActions.legendMouseLeave(dataKey))
+        },
+
+        handleRechartsLegendSelectElement: (dataKey: string) => {
+            dispatch(RechartsModifyActions.legendSelectElement(dataKey))
         },
     }
 }

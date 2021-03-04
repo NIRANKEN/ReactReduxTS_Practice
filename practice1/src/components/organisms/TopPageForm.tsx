@@ -10,13 +10,15 @@ import { RechartsSample } from '../atoms/RechartsSample';
 import ReactChartJs2Sample from '../atoms/ReactChartJs2Sample';
 import ApexChartsSample from '../atoms/ApexChartsSample';
 import CheckBox from '../atoms/CheckBox';
+import { RechartsProps } from '../../RechartsProps';
 
 // Containerに定義されているpropsへの変換はココを意識する
 interface OwnProps {
     inputValue: string
     selectedValue: string
     clickCount: number,
-    checkedState: boolean
+    checkedState: boolean,
+    rechartsProps: Array<RechartsProps>
 }
 
 // TODO: styleとか、共通化できるところは共通にしたい.
@@ -71,7 +73,7 @@ export class TopPageForm extends React.Component<Props> {
                         <Grid item>
                             <Typography variant="h4">・Recharts Sample</Typography>
                             <Box border-radius="4px" border="2px solid blue" overflow="hidden" padding="16px" height="400px" width="800px" marginBottom="24px">
-                                <RechartsSample />
+                                <RechartsSample chartProps={this.props.rechartsProps} handleLegendMouseEnter={this.props.handleRechartsLegendMouseEnter} handleLegendMouseLeave={this.props.handleRechartsLegendMouseLeave} handleLegendSelectElement={this.props.handleRechartsLegendSelectElement} />
                             </Box>
                         </Grid>
 
