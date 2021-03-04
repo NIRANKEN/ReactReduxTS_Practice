@@ -12,6 +12,7 @@ export interface TopPageHandler {
     handleOnCheckBox(checked: boolean): void
     handleRechartsLegendMouseEnter(dataKey: string): void
     handleRechartsLegendMouseLeave(dataKey: string): void
+    handleRechartsLegendSelectElement(dataKey: string): void
 }
 
 // アプリケーション全体のstateを基に、TopPageFormにわたすpropsをつくる
@@ -55,7 +56,10 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 
         handleRechartsLegendMouseLeave: (dataKey: string) => {
             dispatch(RechartsModifyActions.legendMouseLeave(dataKey))
+        },
 
+        handleRechartsLegendSelectElement: (dataKey: string) => {
+            dispatch(RechartsModifyActions.legendSelectElement(dataKey))
         },
     }
 }

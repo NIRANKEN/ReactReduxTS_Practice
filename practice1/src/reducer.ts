@@ -45,6 +45,7 @@ export const Reducer = reducerWithInitialState(initialState)
     })
 
     .case(RechartsModifyActions.legendMouseEnter, (state, dataKey) => {
+        // TODO: この辺もうちょいうまいやり方ある気がする
         const modifiedRechartsProps = state.rechartsProps.map((v) => {
             v.isHover = dataKey === v.key; 
             return v;
@@ -53,9 +54,22 @@ export const Reducer = reducerWithInitialState(initialState)
     })
 
     .case(RechartsModifyActions.legendMouseLeave, (state, dataKey) => {
+        // TODO: この辺もうちょいうまいやり方ある気がする
         const modifiedRechartsProps = state.rechartsProps.map((v) => {
             v.isHover = false; 
             return v;
         }); 
+        return { ...state, rechartsProps: modifiedRechartsProps}
+    })
+
+    .case(RechartsModifyActions.legendSelectElement, (state, dataKey) => {
+        // TODO: この辺もうちょいうまいやり方ある気がする
+        const modifiedRechartsProps = state.rechartsProps.map((v) => {
+            if (v.key === dataKey) {
+                v.display = !v.display
+                v.isHover = false;
+            }
+            return v;
+        });
         return { ...state, rechartsProps: modifiedRechartsProps}
     })

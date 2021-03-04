@@ -14,4 +14,5 @@ export const TextInputActions = {
 export const RechartsModifyActions = {
     legendMouseEnter: actionCreator<string>('LEGEND_MOUSE_ENTER'),
     legendMouseLeave: actionCreator<string>('LEGEND_MOUSE_LEAVE'),
+    legendSelectElement: actionCreator<string>('LEGEND_SELECT_ELEMENT'),
 }

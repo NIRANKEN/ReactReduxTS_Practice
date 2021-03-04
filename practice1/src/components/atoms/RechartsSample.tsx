@@ -61,18 +61,10 @@ interface OwnProps {
   chartProps: Array<RechartsProps>,
   handleLegendMouseEnter: Function,
   handleLegendMouseLeave: Function,
-  selectBar: Function
+  handleLegendSelectElement: Function,
 }
 
 type Props = OwnProps;
-
-// 切り出す
-/*
-const inputLabels = [
-  { key: '総社員数', color: '#7fdaec', type: 'bar', yAxisId: 'left'},
-  { key: '管理職者人数', color: '#ecbde3', type: 'bar', yAxisId: 'left'},
-  { key: '管理職者比率', color: '#7a5c9a', type: 'line', yAxisId: 'right'},
-]*/
 
 export const RechartsSample : React.FC<Props> = (props) => {
     return (
@@ -92,16 +84,18 @@ export const RechartsSample : React.FC<Props> = (props) => {
           <XAxis dataKey="name" scale="band" />
           <YAxis yAxisId="left" orientation="left" unit="人" />
           <YAxis yAxisId="right" orientation="right" unit="%" />
-          <Tooltip />
-          <Legend onMouseOver={(e) => props.handleLegendMouseEnter(e.dataKey)} onMouseOut={(e) => props.handleLegendMouseLeave(e.dataKey)}/>
+          <Tooltip />a
+          <Legend 
+            onMouseOver={(e) => props.handleLegendMouseEnter(e.dataKey)} 
+            onMouseOut={(e) => props.handleLegendMouseLeave(e.dataKey)} 
+            onClick={(e: any) => props.handleLegendSelectElement(e.dataKey)} // TODO: 具体的なTypeを指定したい (他のところも)
+          />
           {props.chartProps.map((cp) => {
             // TODO: この条件分岐もっとわかりやすくなる気がする
             if(cp.type === 'bar') {
-              return <Bar yAxisId={cp.yAxisId} dataKey={cp.key} barSize={20} fill={cp.color} fillOpacity={Number(
-                cp.isHover ? 1 : 0.6
-              )} />;
+              return <Bar key={cp.key} yAxisId={cp.yAxisId} dataKey={cp.key} barSize={20} fill={cp.color} fillOpacity={Number(cp.isHover ? 0.6 : 1)} hide={!cp.display} />;
             } else {
-              return <Line yAxisId={cp.yAxisId} dataKey={cp.key} stroke={cp.color} />;
+              return <Line key={cp.key} yAxisId={cp.yAxisId} dataKey={cp.key} stroke={cp.color} hide={!cp.display} />;
             }
           })}
         </ComposedChart>

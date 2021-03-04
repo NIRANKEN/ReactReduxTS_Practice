@@ -73,7 +73,7 @@ export class TopPageForm extends React.Component<Props> {
                         <Grid item>
                             <Typography variant="h4">・Recharts Sample</Typography>
                             <Box border-radius="4px" border="2px solid blue" overflow="hidden" padding="16px" height="400px" width="800px" marginBottom="24px">
-                                <RechartsSample chartProps={this.props.rechartsProps} handleLegendMouseEnter={this.props.handleRechartsLegendMouseEnter} handleLegendMouseLeave= {this.props.handleRechartsLegendMouseLeave} selectBar={()=>{}} />
+                                <RechartsSample chartProps={this.props.rechartsProps} handleLegendMouseEnter={this.props.handleRechartsLegendMouseEnter} handleLegendMouseLeave={this.props.handleRechartsLegendMouseLeave} handleLegendSelectElement={this.props.handleRechartsLegendSelectElement} />
                             </Box>
                         </Grid>
 
