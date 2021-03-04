@@ -95,9 +95,9 @@ export const RechartsSample : React.FC<Props> = (props) => {
           {props.chartProps.map((cp) => {
             // TODO: この条件分岐もっとわかりやすくなる気がする
             if(cp.type === 'bar') {
-              return <Bar key={cp.key} yAxisId={cp.yAxisId} dataKey={cp.key} barSize={20} fill={cp.color} fillOpacity={Number(cp.isHover ? 0.6 : 1)} hide={!cp.display} />;
+              return <Bar key={cp.key} yAxisId={cp.yAxisId} dataKey={cp.key} barSize={20} fill={cp.color} fillOpacity={Number(cp.isHover ? 0.4 : 1)} hide={!cp.display} />;
             } else {
-              return <Line key={cp.key} yAxisId={cp.yAxisId} dataKey={cp.key} stroke={cp.color} hide={!cp.display} />;
+              return <Line key={cp.key} yAxisId={cp.yAxisId} dataKey={cp.key} stroke={cp.color} hide={!cp.display} opacity={Number(cp.isHover ? 0.4 : 1)} />;
             }
           })}
         </ComposedChart>
