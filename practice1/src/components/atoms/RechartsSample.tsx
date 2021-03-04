@@ -67,7 +67,7 @@ interface OwnProps {
 
 type Props = OwnProps;
 
-// TODO: 固定のものと、パラメータになるのが何かを仕分けする
+// TODO: 固定のものと、パラメータ必要なものを仕分けする
 export const RechartsSample : React.FC<Props> = (props) => {
     return (
       <ResponsiveContainer width="100%" height="100%">
@@ -86,7 +86,7 @@ export const RechartsSample : React.FC<Props> = (props) => {
           <XAxis dataKey="name" scale="band" />
           <YAxis yAxisId="left" orientation="left" unit="人" />
           <YAxis yAxisId="right" orientation="right" unit="%" />
-          <Tooltip />a
+          <Tooltip />
           <Legend 
             onMouseOver={(e) => props.handleLegendMouseEnter(e.dataKey)} 
             onMouseOut={(e) => props.handleLegendMouseLeave(e.dataKey)} 
