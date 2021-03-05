@@ -9,6 +9,7 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
+  LabelList,
 } from 'recharts';
 import { RechartsProps } from '../../RechartsProps';
 
@@ -70,7 +71,7 @@ type Props = OwnProps;
 // TODO: 固定のものと、パラメータ必要なものを仕分けする
 export const RechartsSample : React.FC<Props> = (props) => {
     return (
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width='100%' height='100%'>
         <ComposedChart
           width={500}
           height={350}
@@ -82,10 +83,10 @@ export const RechartsSample : React.FC<Props> = (props) => {
             left: 20,
           }}
         >
-          <CartesianGrid stroke="#f5f5f5" />
-          <XAxis dataKey="name" scale="band" />
-          <YAxis yAxisId="left" orientation="left" unit="人" />
-          <YAxis yAxisId="right" orientation="right" unit="%" />
+          <CartesianGrid stroke='#f5f5f5' />
+          <XAxis dataKey='name' scale='band' />
+          <YAxis yAxisId='left' orientation='left' unit='人' />
+          <YAxis yAxisId='right' orientation='right' unit='%' />
           <Tooltip />
           <Legend 
             onMouseOver={(e) => props.handleLegendMouseEnter(e.dataKey)} 
@@ -95,9 +96,17 @@ export const RechartsSample : React.FC<Props> = (props) => {
           {props.chartProps.map((cp) => {
             // TODO: この条件分岐もっとわかりやすくなる気がする
             if(cp.type === 'bar') {
-              return <Bar key={cp.key} yAxisId={cp.yAxisId} dataKey={cp.key} barSize={20} fill={cp.color} fillOpacity={Number(cp.isHover ? 0.4 : 1)} hide={!cp.display} />;
+              return (
+                <Bar key={cp.key} yAxisId={cp.yAxisId} dataKey={cp.key} barSize={20} fill={cp.color} fillOpacity={Number(cp.isHover ? 0.4 : 1)} hide={!cp.display} >
+                  <LabelList dataKey={cp.key} position="top" />
+                </Bar>
+              );
             } else {
-              return <Line key={cp.key} yAxisId={cp.yAxisId} dataKey={cp.key} stroke={cp.color} hide={!cp.display} opacity={Number(cp.isHover ? 0.4 : 1)} />;
+              return (
+                <Line key={cp.key} yAxisId={cp.yAxisId} dataKey={cp.key} stroke={cp.color} hide={!cp.display} opacity={Number(cp.isHover ? 0.4 : 1)}>
+                  <LabelList dataKey={cp.key} position="top" />
+                </Line> 
+              );
             }
           })}
         </ComposedChart>
